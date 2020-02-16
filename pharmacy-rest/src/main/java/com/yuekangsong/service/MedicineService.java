@@ -1,5 +1,7 @@
 package com.yuekangsong.service;
 
+import com.medince.pojo.MedicineMessage;
+
 public interface MedicineService {
 
     //查询药品的基本信息
