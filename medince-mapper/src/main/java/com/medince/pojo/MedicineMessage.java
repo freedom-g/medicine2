@@ -162,4 +162,26 @@ public class MedicineMessage {
     public void setUpdated(Date updated) {
         this.updated = updated;
     }
+
+    @Override
+    public String toString() {
+        return "MedicineMessage{" +
+                "id=" + id +
+                ", itemId='" + itemId + '\'' +
+                ", itemName='" + itemName + '\'' +
+                ", img='" + img + '\'' +
+                ", itemBrand='" + itemBrand + '\'' +
+                ", itemStack=" + itemStack +
+                ", itemBazaar=" + itemBazaar +
+                ", itemMembership=" + itemMembership +
+                ", itemPromotion=" + itemPromotion +
+                ", status=" + status +
+                ", paramItem='" + paramItem + '\'' +
+                ", pai=" + pai +
+                ", num=" + num +
+                ", cid=" + cid +
+                ", created=" + created +
+                ", updated=" + updated +
+                '}';
+    }
 }
