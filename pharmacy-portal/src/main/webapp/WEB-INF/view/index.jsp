@@ -464,8 +464,8 @@ catch(e){}
             </div>
             <div class="category new_category">
                 <ul class="menu">
-                    <li>
-                        <c:forEach items="${data}" var="data1">
+                    <c:forEach items="${data}" var="data1">
+                        <li>
                             <div class="class sprite01">
                                 <span class="am-goods-ionic"><img
                                         src="../../data/upload/shop/common/category-pic-5483.jpg"></span>
@@ -481,17 +481,16 @@ catch(e){}
                                             </div>
                                             <c:forEach items="${data2.item}" var="data3">
                                                 <div class="am-sub-right">
-                                                    ${data3.name}
+                                                        ${data3.name}
                                                 </div>
                                                 <div class="clear"></div>
                                             </c:forEach>
                                         </div>
-
                                     </div>
                                 </c:forEach>
                             </div>
-                        </c:forEach>
-                    </li>
+                        </li>
+                    </c:forEach>
                 </ul>
             </div>
 
