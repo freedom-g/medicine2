@@ -8,12 +8,17 @@ spring:
 #       static-path-pattern: "*.do"
     
 mybatis: 
-  type-aliases-package: com.taotao.pojo
+  type-aliases-package: com.medince.pojo
   mapper-locations:
-    - classpath:mapper/*.xml
+    - com/medince/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
     
 server:
   servlet:
     context-path: /aa
-    
-  port: 8080   
+  port: 8080
+
+logging:
+  level:
+    com.medince.mapper: debug

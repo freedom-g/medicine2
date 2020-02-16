@@ -29,9 +29,9 @@ public class MedinceServiceImpl implements MedinceService{
 
 
     @Override
-    public MedicineMessage query(String itemid) {
+    public MedicineMessage query(String itemId) {
 
-        MedicineMessage me = mediMapper.selectByPrimaryKey(Integer.valueOf(itemid));
+        MedicineMessage me = mediMapper.selectByPrimaryKey(Integer.valueOf(itemId));
 
         return me;
 

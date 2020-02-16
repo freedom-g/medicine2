@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface MedinceService {
 
-    MedicineMessage query(String itemid);
+    MedicineMessage query(String itemId);
 
     //查询商品的详情信息
     public ItemDesc queryDesc(String itemId);
