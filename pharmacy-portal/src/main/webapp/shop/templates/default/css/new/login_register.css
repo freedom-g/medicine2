@@ -1,0 +1,460 @@
+body {
+    font-family: "microsoft yahei", "微软雅黑"
+}
+
+.am-area {
+    width: 988px;
+    margin: 60px auto;
+}
+
+.am-peopel {
+    margin-left: 60px;
+}
+
+.am-left-bar {
+    float: left;
+    width: 488px;
+}
+
+.am-right-bar {
+    background: #f4f4f4;
+    float: left;
+    width: 496px;
+    padding: 0 10px;
+    position: relative;
+    margin-top: 40px;
+}
+
+.am-right-barnew {
+
+    width: 500px;
+    margin: 80px auto;
+}
+
+.am-right-bar .am-title {
+    color: #666;
+    font-size: 20px;
+    margin-bottom: 30px;
+	padding:0 5px;
+}
+#signupForm{/* width:496px;*/ margin:0 auto;}
+.am-tips {
+    float: right;
+    font-size: 14px;
+}
+
+.am-tips b {
+    color: #00b8f0;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.am-tips b a {
+    color: #00b8f0;
+}
+
+.am-form-group {
+    width: 100%;
+    box-shadow: 0 3px 5px 0px #888888;
+    -moz-box-shadow: 0 3px 5px 0px #888888;
+    -webkit-box-shadow: 0 3px 5px 0px #888888;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+.am-form-group .input-group-addon {
+    background: #eab7bb;
+}
+
+.has-success .am-form-group .form-control {
+    border: 0;
+    border: none;
+    height: 65px;
+    color: #bdbab4;
+    font-size: 16px;
+}
+
+.has-success .form-control:focus {
+    border-color: #eab7bb;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #eab7bb;
+}
+
+.has-success .am-form-group .input-group-addon {
+    border: 0;
+    border: none;
+}
+
+.am-form-group .input-group-addon {
+    width: 80px;
+    height: 65px;
+    color: #fff;
+    font-size: 30px;
+}
+
+.form-group .form-control-feedback {
+    color: #a0d271;
+    font-size: 25px;
+    margin-top: 15px;
+}
+
+.has-feedback .red-icon {
+    color: #ff5958;
+
+}
+
+.am-right-bar .has-feedback {
+
+}
+
+.checkbox .am-forget {
+    float: right;
+    color: #00b8f0;
+}
+
+.checkbox .am-forget a {
+    color: #00b8f0;
+}
+
+.checkbox label {
+    color: #333;
+    font-size: 14px;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    float: left;
+}
+
+.am-om-title {
+    border-bottom: 1px dashed #ccc;
+    font-size: 16px;
+    padding-bottom: 10px;
+    color: #666;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.am-other-methodnew ul li {
+    margin-right: 20px;
+
+
+}
+
+.am-other-method {
+    background: url("../../images/new/line-bottom.jpg") no-repeat center  20px;
+    padding-bottom: 30px;
+	width:496px;
+    position: absolute;
+    z-index: 1;
+    bottom:-20px;
+
+}
+
+.am-login-button {
+    width: 275px;
+    margin: 0 auto;
+}
+
+.am-login-button input {
+    width: 100%;
+    height: 65px;
+    font-size: 22px;
+    background: #fb6361;
+    /* background: -webkit-linear-gradient(#fb6361, #fa4c4b);
+     background: -o-linear-gradient(#fb6361, #fa4c4b);
+     background: -moz-linear-gradient(#fb6361, #fa4c4b);
+     background: linear-gradient(#fb6361, #fa4c4b);*/
+    /* background: -moz-linear-gradient(top, #fb6361 0%, #fa4c4b 100%);
+     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fb6361), color-stop(100%, #fa4c4b));
+     background: -webkit-linear-gradient(top, #fb6361 0%, #fa4c4b 100%);
+     background: -o-linear-gradient(top, #fb6361 0%, #fa4c4b 100%);
+     background: -ms-linear-gradient(top, #fb6361 0%, #fa4c4b 100%);
+     background: linear-gradient(to bottom, #fb6361 0%, #fa4c4b 100%);
+     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb6361', endColorstr='#fa4c4b', GradientType=0);*/
+
+}
+
+:root .am-login-button button {
+    filter: none;
+}
+
+/*注册样式开始*/
+.am-name {
+    font-size: 18px;
+    color: #fff;
+    font-weight: normal;
+
+}
+
+.am-hide {
+    display: none;
+}
+
+.am-agree a {
+    color: #00bbff;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.am-form-area .am-input {
+    width: 192px;
+    height: 55px;
+    float: left;
+    border: 0;
+    color: #bdbab4;
+    font-size: 16px;
+
+}
+
+.am-input-shadow {
+    box-shadow: 0 3px 5px 0 #888888;
+    -moz-box-shadow: 0 3px 5px 0 #888888;
+    -webkit-box-shadow: 0 3px 5px 0 #888888;
+    width: 192px;
+    height: 55px;
+    border-radius: 180px / 120px;
+    -moz-border-radius: 180px /120px;
+    float: left;
+}
+
+.am-form-area .am-input:focus {
+
+    border-color: #66afe9;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(234, 183, 187, 0.6);
+    outline: 0 none;
+
+}
+
+.am-code, .am-code-name {
+    display: block;
+    float: left;
+    height: 55px;
+    color: #aaa;
+    line-height: 55px;
+    margin-left: 8px;
+}
+
+.am-button {
+    height: 55px;
+
+    color: #fff;
+    font-size: 16px;
+    padding: 0 40px;
+    margin-left: 8px;
+}
+
+.am-gray-button {
+    background: #d7d7d7;
+}
+
+.am-gray-button:hover {
+    background: #d7d7d7;
+    color: #fff;
+}
+
+.am-agree {
+    margin-top: 20px;
+    width: 200px;
+    margin: 25px auto 10px;
+}
+
+.am-agree .am-agreement {
+    margin-left: 30px;
+}
+
+/*单选框样式*/
+.checkboxFive {
+    width: 25px;
+    /* margin: 20px 100px;*/
+    position: relative;
+}
+
+.am-right-bar .checkboxFive input {
+    margin-left: 0;
+}
+
+.am-autologin {
+    margin-left: 20px;
+}
+
+.checkboxFive label {
+    cursor: pointer;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 0;
+    left: 0;
+    background: #eee;
+    border: 1px solid #ddd;
+}
+
+.checkboxFive label:after {
+    opacity: 0.2;
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 6px;
+    background: transparent;
+    top: 6px;
+    left: 7px;
+    border: 3px solid #333;
+    border-top: none;
+    border-right: none;
+
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.checkboxFive label:hover::after {
+    opacity: 0.5;
+}
+
+.checkboxFive input[type=checkbox]:checked + label:after {
+    opacity: 1;
+}
+
+.am-agree .checkboxFive input {
+    margin-left: 0;
+}
+
+/*单选框样式*/
+
+/* step one */
+.am-container {
+    width: 1000px;
+    margin: 0 auto;
+    background: #f4f4f4;
+    padding-top: 100px;
+}
+
+.am-progress {
+    width: 648px;
+    margin: 0 auto;
+    background: #cccccc;
+    box-shadow: none;
+    height: 10px;
+    position: relative;
+    overflow: visible;
+}
+
+.am-progress-bar {
+    background: #fc6463;
+    box-shadow: none;
+}
+
+.am-step {
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    display: block;
+    border-radius: 48px;
+    -moz-border-radius: 48px;
+    -webkit-border-radius: 48px;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+
+}
+
+.am-step-one {
+    left: -24px;
+    top: -19px;
+
+    position: absolute;
+    z-index: 3;
+
+}
+
+.am-step-two {
+    left: 192px;
+    top: -19px;
+
+    position: absolute;
+    z-index: 3;
+}
+
+.am-step-three {
+    left: 408px;
+    top: -19px;
+
+    position: absolute;
+    z-index: 3;
+}
+
+.am-step-four {
+    right: -24px;
+    top: -19px;
+
+    position: absolute;
+    z-index: 3;
+}
+
+.am-progress .am-step-gray {
+    background: #ccc;
+}
+
+.am-step-orange {
+    background: #fc6463;
+}
+
+.am-progress p {
+    color: #666;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+/* step 2*/
+.am-check-box {
+    border: 1px solid #d7d7d7;
+    width: 648px;
+    box-shadow: 0 0 3px #d7d7d7;
+    padding-bottom: 60px;
+    margin-bottom: 20px;
+}
+
+.am-check-area {
+    width: 650px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.am-check-title {
+    font-size: 16px;
+    color: #666;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.am-check-input {
+    margin-left: 120px;
+}
+
+.am-pic {
+    text-align: center;
+}
+
+.am-pic img {
+    width: 60px;
+}
+
+.am-prompt {
+    text-align: center;
+    color: #666;
+    font-size: 22px;
+}
+.glyphicon-ok-sign,.glyphicon-remove-sign{ display:none;}
+.am-error{ }
+
+
+.am-gray-button.disabled, .am-gray-button.disabled.active, .am-gray-button.disabled.focus, .am-gray-button.disabled:active, .am-gray-button.disabled:focus, .am-gray-button.disabled:hover, .am-gray-button[disabled], .am-gray-button.active[disabled], .am-gray-button.focus[disabled], .am-gray-button[disabled]:active, .am-gray-button[disabled]:focus, .am-gray-button[disabled]:hover{
+    border-color: #fb4f4f;
+    color: #fff;
+    background-color: #fb4f4f;
+}

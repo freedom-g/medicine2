@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.medince.mapper.SalesMapper" >
+  <resultMap id="BaseResultMap" type="com.medince.pojo.Sales" >
+    <result column="item_id" property="itemId" jdbcType="VARCHAR" />
+    <result column="item_mj" property="itemMj" jdbcType="VARCHAR" />
+    <result column="item_jg" property="itemJg" jdbcType="INTEGER" />
+    <result column="item_hd" property="itemHd" jdbcType="VARCHAR" />
+    <result column="item_sl" property="itemSl" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    item_id, item_mj, item_jg, item_hd, item_sl, created, updated
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.medince.pojo.SalesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sales
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.medince.pojo.SalesExample" >
+    delete from sales
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.medince.pojo.Sales" >
+    insert into sales (item_id, item_mj, item_jg, 
+      item_hd, item_sl, created, 
+      updated)
+    values (#{itemId,jdbcType=VARCHAR}, #{itemMj,jdbcType=VARCHAR}, #{itemJg,jdbcType=INTEGER}, 
+      #{itemHd,jdbcType=VARCHAR}, #{itemSl,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, 
+      #{updated,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.medince.pojo.Sales" >
+    insert into sales
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="itemMj != null" >
+        item_mj,
+      </if>
+      <if test="itemJg != null" >
+        item_jg,
+      </if>
+      <if test="itemHd != null" >
+        item_hd,
+      </if>
+      <if test="itemSl != null" >
+        item_sl,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itemId != null" >
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemMj != null" >
+        #{itemMj,jdbcType=VARCHAR},
+      </if>
+      <if test="itemJg != null" >
+        #{itemJg,jdbcType=INTEGER},
+      </if>
+      <if test="itemHd != null" >
+        #{itemHd,jdbcType=VARCHAR},
+      </if>
+      <if test="itemSl != null" >
+        #{itemSl,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.medince.pojo.SalesExample" resultType="java.lang.Integer" >
+    select count(*) from sales
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sales
+    <set >
+      <if test="record.itemId != null" >
+        item_id = #{record.itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemMj != null" >
+        item_mj = #{record.itemMj,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemJg != null" >
+        item_jg = #{record.itemJg,jdbcType=INTEGER},
+      </if>
+      <if test="record.itemHd != null" >
+        item_hd = #{record.itemHd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemSl != null" >
+        item_sl = #{record.itemSl,jdbcType=INTEGER},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sales
+    set item_id = #{record.itemId,jdbcType=VARCHAR},
+      item_mj = #{record.itemMj,jdbcType=VARCHAR},
+      item_jg = #{record.itemJg,jdbcType=INTEGER},
+      item_hd = #{record.itemHd,jdbcType=VARCHAR},
+      item_sl = #{record.itemSl,jdbcType=INTEGER},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

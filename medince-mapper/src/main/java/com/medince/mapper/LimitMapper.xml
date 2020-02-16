@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.medince.mapper.LimitMapper" >
+  <resultMap id="BaseResultMap" type="com.medince.pojo.Limit" >
+    <id column="lid" property="lid" jdbcType="BIGINT" />
+    <result column="limit_name" property="limitName" jdbcType="VARCHAR" />
+    <result column="limit_type" property="limitType" jdbcType="BIGINT" />
+    <result column="limit_parent" property="limitParent" jdbcType="BIGINT" />
+    <result column="limit_path" property="limitPath" jdbcType="VARCHAR" />
+    <result column="remake" property="remake" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    lid, limit_name, limit_type, limit_parent, limit_path, remake
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.medince.pojo.LimitExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from limit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from limit
+    where lid = #{lid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from limit
+    where lid = #{lid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.medince.pojo.LimitExample" >
+    delete from limit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.medince.pojo.Limit" >
+    insert into limit (lid, limit_name, limit_type, 
+      limit_parent, limit_path, remake
+      )
+    values (#{lid,jdbcType=BIGINT}, #{limitName,jdbcType=VARCHAR}, #{limitType,jdbcType=BIGINT}, 
+      #{limitParent,jdbcType=BIGINT}, #{limitPath,jdbcType=VARCHAR}, #{remake,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.medince.pojo.Limit" >
+    insert into limit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lid != null" >
+        lid,
+      </if>
+      <if test="limitName != null" >
+        limit_name,
+      </if>
+      <if test="limitType != null" >
+        limit_type,
+      </if>
+      <if test="limitParent != null" >
+        limit_parent,
+      </if>
+      <if test="limitPath != null" >
+        limit_path,
+      </if>
+      <if test="remake != null" >
+        remake,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lid != null" >
+        #{lid,jdbcType=BIGINT},
+      </if>
+      <if test="limitName != null" >
+        #{limitName,jdbcType=VARCHAR},
+      </if>
+      <if test="limitType != null" >
+        #{limitType,jdbcType=BIGINT},
+      </if>
+      <if test="limitParent != null" >
+        #{limitParent,jdbcType=BIGINT},
+      </if>
+      <if test="limitPath != null" >
+        #{limitPath,jdbcType=VARCHAR},
+      </if>
+      <if test="remake != null" >
+        #{remake,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.medince.pojo.LimitExample" resultType="java.lang.Integer" >
+    select count(*) from limit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update limit
+    <set >
+      <if test="record.lid != null" >
+        lid = #{record.lid,jdbcType=BIGINT},
+      </if>
+      <if test="record.limitName != null" >
+        limit_name = #{record.limitName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.limitType != null" >
+        limit_type = #{record.limitType,jdbcType=BIGINT},
+      </if>
+      <if test="record.limitParent != null" >
+        limit_parent = #{record.limitParent,jdbcType=BIGINT},
+      </if>
+      <if test="record.limitPath != null" >
+        limit_path = #{record.limitPath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remake != null" >
+        remake = #{record.remake,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update limit
+    set lid = #{record.lid,jdbcType=BIGINT},
+      limit_name = #{record.limitName,jdbcType=VARCHAR},
+      limit_type = #{record.limitType,jdbcType=BIGINT},
+      limit_parent = #{record.limitParent,jdbcType=BIGINT},
+      limit_path = #{record.limitPath,jdbcType=VARCHAR},
+      remake = #{record.remake,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.medince.pojo.Limit" >
+    update limit
+    <set >
+      <if test="limitName != null" >
+        limit_name = #{limitName,jdbcType=VARCHAR},
+      </if>
+      <if test="limitType != null" >
+        limit_type = #{limitType,jdbcType=BIGINT},
+      </if>
+      <if test="limitParent != null" >
+        limit_parent = #{limitParent,jdbcType=BIGINT},
+      </if>
+      <if test="limitPath != null" >
+        limit_path = #{limitPath,jdbcType=VARCHAR},
+      </if>
+      <if test="remake != null" >
+        remake = #{remake,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lid = #{lid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.medince.pojo.Limit" >
+    update limit
+    set limit_name = #{limitName,jdbcType=VARCHAR},
+      limit_type = #{limitType,jdbcType=BIGINT},
+      limit_parent = #{limitParent,jdbcType=BIGINT},
+      limit_path = #{limitPath,jdbcType=VARCHAR},
+      remake = #{remake,jdbcType=VARCHAR}
+    where lid = #{lid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.medince.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.medince.pojo.User" >
+    <id column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="user_tx" property="userTx" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="user_zsname" property="userZsname" jdbcType="VARCHAR" />
+    <result column="user_sex" property="userSex" jdbcType="TINYINT" />
+    <result column="user_birthday" property="userBirthday" jdbcType="TIMESTAMP" />
+    <result column="user_address" property="userAddress" jdbcType="VARCHAR" />
+    <result column="user_qq" property="userQq" jdbcType="INTEGER" />
+    <result column="user_alili" property="userAlili" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="user_state" property="userState" jdbcType="INTEGER" />
+    <result column="user_created" property="userCreated" jdbcType="TIMESTAMP" />
+    <result column="user_updated" property="userUpdated" jdbcType="TIMESTAMP" />
+    <result column="user_yl" property="userYl" jdbcType="VARCHAR" />
+    <result column="user_zj" property="userZj" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    user_id, user_tx, user_name, user_email, user_zsname, user_sex, user_birthday, user_address, 
+    user_qq, user_alili, password, user_state, user_created, user_updated, user_yl, user_zj
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.medince.pojo.UserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.medince.pojo.UserExample" >
+    delete from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.medince.pojo.User" >
+    insert into user (user_id, user_tx, user_name, 
+      user_email, user_zsname, user_sex, 
+      user_birthday, user_address, user_qq, 
+      user_alili, password, user_state, 
+      user_created, user_updated, user_yl, 
+      user_zj)
+    values (#{userId,jdbcType=BIGINT}, #{userTx,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{userEmail,jdbcType=VARCHAR}, #{userZsname,jdbcType=VARCHAR}, #{userSex,jdbcType=TINYINT}, 
+      #{userBirthday,jdbcType=TIMESTAMP}, #{userAddress,jdbcType=VARCHAR}, #{userQq,jdbcType=INTEGER}, 
+      #{userAlili,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{userState,jdbcType=INTEGER}, 
+      #{userCreated,jdbcType=TIMESTAMP}, #{userUpdated,jdbcType=TIMESTAMP}, #{userYl,jdbcType=VARCHAR}, 
+      #{userZj,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.medince.pojo.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userTx != null" >
+        user_tx,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="userEmail != null" >
+        user_email,
+      </if>
+      <if test="userZsname != null" >
+        user_zsname,
+      </if>
+      <if test="userSex != null" >
+        user_sex,
+      </if>
+      <if test="userBirthday != null" >
+        user_birthday,
+      </if>
+      <if test="userAddress != null" >
+        user_address,
+      </if>
+      <if test="userQq != null" >
+        user_qq,
+      </if>
+      <if test="userAlili != null" >
+        user_alili,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="userState != null" >
+        user_state,
+      </if>
+      <if test="userCreated != null" >
+        user_created,
+      </if>
+      <if test="userUpdated != null" >
+        user_updated,
+      </if>
+      <if test="userYl != null" >
+        user_yl,
+      </if>
+      <if test="userZj != null" >
+        user_zj,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userTx != null" >
+        #{userTx,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userZsname != null" >
+        #{userZsname,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        #{userSex,jdbcType=TINYINT},
+      </if>
+      <if test="userBirthday != null" >
+        #{userBirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userAddress != null" >
+        #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userQq != null" >
+        #{userQq,jdbcType=INTEGER},
+      </if>
+      <if test="userAlili != null" >
+        #{userAlili,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="userState != null" >
+        #{userState,jdbcType=INTEGER},
+      </if>
+      <if test="userCreated != null" >
+        #{userCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userUpdated != null" >
+        #{userUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userYl != null" >
+        #{userYl,jdbcType=VARCHAR},
+      </if>
+      <if test="userZj != null" >
+        #{userZj,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.medince.pojo.UserExample" resultType="java.lang.Integer" >
+    select count(*) from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user
+    <set >
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.userTx != null" >
+        user_tx = #{record.userTx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userName != null" >
+        user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userEmail != null" >
+        user_email = #{record.userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userZsname != null" >
+        user_zsname = #{record.userZsname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userSex != null" >
+        user_sex = #{record.userSex,jdbcType=TINYINT},
+      </if>
+      <if test="record.userBirthday != null" >
+        user_birthday = #{record.userBirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.userAddress != null" >
+        user_address = #{record.userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userQq != null" >
+        user_qq = #{record.userQq,jdbcType=INTEGER},
+      </if>
+      <if test="record.userAlili != null" >
+        user_alili = #{record.userAlili,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userState != null" >
+        user_state = #{record.userState,jdbcType=INTEGER},
+      </if>
+      <if test="record.userCreated != null" >
+        user_created = #{record.userCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.userUpdated != null" >
+        user_updated = #{record.userUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.userYl != null" >
+        user_yl = #{record.userYl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userZj != null" >
+        user_zj = #{record.userZj,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user
+    set user_id = #{record.userId,jdbcType=BIGINT},
+      user_tx = #{record.userTx,jdbcType=VARCHAR},
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      user_email = #{record.userEmail,jdbcType=VARCHAR},
+      user_zsname = #{record.userZsname,jdbcType=VARCHAR},
+      user_sex = #{record.userSex,jdbcType=TINYINT},
+      user_birthday = #{record.userBirthday,jdbcType=TIMESTAMP},
+      user_address = #{record.userAddress,jdbcType=VARCHAR},
+      user_qq = #{record.userQq,jdbcType=INTEGER},
+      user_alili = #{record.userAlili,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      user_state = #{record.userState,jdbcType=INTEGER},
+      user_created = #{record.userCreated,jdbcType=TIMESTAMP},
+      user_updated = #{record.userUpdated,jdbcType=TIMESTAMP},
+      user_yl = #{record.userYl,jdbcType=VARCHAR},
+      user_zj = #{record.userZj,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.medince.pojo.User" >
+    update user
+    <set >
+      <if test="userTx != null" >
+        user_tx = #{userTx,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userZsname != null" >
+        user_zsname = #{userZsname,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        user_sex = #{userSex,jdbcType=TINYINT},
+      </if>
+      <if test="userBirthday != null" >
+        user_birthday = #{userBirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userAddress != null" >
+        user_address = #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userQq != null" >
+        user_qq = #{userQq,jdbcType=INTEGER},
+      </if>
+      <if test="userAlili != null" >
+        user_alili = #{userAlili,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="userState != null" >
+        user_state = #{userState,jdbcType=INTEGER},
+      </if>
+      <if test="userCreated != null" >
+        user_created = #{userCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userUpdated != null" >
+        user_updated = #{userUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userYl != null" >
+        user_yl = #{userYl,jdbcType=VARCHAR},
+      </if>
+      <if test="userZj != null" >
+        user_zj = #{userZj,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.medince.pojo.User" >
+    update user
+    set user_tx = #{userTx,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      user_zsname = #{userZsname,jdbcType=VARCHAR},
+      user_sex = #{userSex,jdbcType=TINYINT},
+      user_birthday = #{userBirthday,jdbcType=TIMESTAMP},
+      user_address = #{userAddress,jdbcType=VARCHAR},
+      user_qq = #{userQq,jdbcType=INTEGER},
+      user_alili = #{userAlili,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      user_state = #{userState,jdbcType=INTEGER},
+      user_created = #{userCreated,jdbcType=TIMESTAMP},
+      user_updated = #{userUpdated,jdbcType=TIMESTAMP},
+      user_yl = #{userYl,jdbcType=VARCHAR},
+      user_zj = #{userZj,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+</mapper>

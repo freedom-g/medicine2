@@ -1,0 +1,19 @@
+spring:
+   datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://47.104.70.243:3306/medince
+      username: testall
+      password: 123456
+#   mvc:
+#       static-path-pattern: "*.do"
+    
+mybatis: 
+  type-aliases-package: com.taotao.pojo
+  mapper-locations:
+    - classpath:mapper/*.xml
+    
+server:
+  servlet:
+    context-path: /aa
+    
+  port: 8080   
