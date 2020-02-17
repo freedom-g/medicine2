@@ -3,6 +3,8 @@ package com.medince.pojo;
 import java.util.Date;
 
 public class Sales {
+    private Integer id;
+
     private String itemId;
 
     private String itemMj;
@@ -16,6 +18,14 @@ public class Sales {
     private Date created;
 
     private Date updated;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getItemId() {
         return itemId;
