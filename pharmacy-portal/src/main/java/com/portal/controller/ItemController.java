@@ -66,4 +66,20 @@ public class ItemController {
         return MedinceResult.ok(data);
     }
 
+
+    //查询药品的销售记录
+    @RequestMapping(value = "/sales/{itemId}",produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public MedinceResult querySales(@PathVariable String itemId){
+        String data = HttpClientUtil.doGet("http://localhost:8085/item/sales/"+itemId);
+        return MedinceResult.ok(data);
+    }
+
+    //查询销售记录的条数
+    @RequestMapping(value = "/sales/count",produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public MedinceResult querySales(){
+        String data = HttpClientUtil.doGet("http://localhost:8080/aa/medin/sales/count");
+        return MedinceResult.ok(data);
+    }
 }

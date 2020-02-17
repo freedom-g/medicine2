@@ -669,7 +669,7 @@ catch(e){}
                     <!--使用物流模版-->
                     <dd>
                         至
-                        <select id="transport_area">
+                        <select>
 
                             <option
                                     value="1" selected>北京
@@ -687,7 +687,7 @@ catch(e){}
 
                         </select>
                     <dd id="transport_price">
-                        <b id="nc_kd">运费：0.00元</b>
+                        <b id="nc_kd">运费：${med.pai}元</b>
                         （满69.00元免运费）
                     </dd>
                     <dd style="color:red;display:none" id="loading_price">loading.....</dd>
@@ -979,7 +979,7 @@ catch(e){}
                                                    href="javascript:void(0);">商品详情</a></li>
                             <li><a id="tabGoodsInstructions" href="javascript:void(0);">说明书</a></li>
                             <li><a id="tabGoodsTraded" href="javascript:void(0);">销售记录
-                                <em>(10亿+ )</em></a></li>
+                                <em>(<nobr id="salesCount"></nobr>)</em></a></li>
                             <li><a id="tabGoodsRate"
                                    href="javascript:void(0);">累计评价<em>(<span id="appraise1"></span>)</em></a>
                             </li>
@@ -1070,26 +1070,20 @@ catch(e){}
                                 <span>共有<nobr id="appraise3"></nobr>人参与评分</span></div>
                             <div class="percent">
                                 <dl>
-                                    <dt>好评<em>(
-                                        <nobr style="white-space: nowrap;" id="appraiseGoodNum2"></nobr>
-                                        %)</em></dt>
+                                    <dt>好评<em>(<nobr style="white-space: nowrap;" id="appraiseGoodNum2"></nobr>%)</em></dt>
                                     <dd>
                                         <i id="goodLength"></i>
                                     </dd>
                                 </dl>
                                 <dl>
-                                    <dt>中评<em>(
-                                        <nobr id="appraiseCentreNum"></nobr>
-                                        %)</em>
+                                    <dt>中评<em>(<nobr id="appraiseCentreNum"></nobr>%)</em>
                                     </dt>
                                     <dd>
                                         <i id="centreLength"></i>
                                     </dd>
                                 </dl>
                                 <dl>
-                                    <dt>差评<em>(
-                                        <nobr id="appraiseBadNum"></nobr>
-                                        %)</em></dt>
+                                    <dt>差评<em>(<nobr id="appraiseBadNum"></nobr>%)</em></dt>
                                     <dd>
                                         <i id="badLength"></i>
                                     </dd>
@@ -1127,7 +1121,7 @@ catch(e){}
                     </div>
                 </div>
                 <!--      end -->
-                <div class="yks-salelog">
+                <%--<div class="yks-salelog">
                     <div class="yks-goods-title-bar hd">
                         <h4><a href="javascript:void(0);">销售记录</a></h4>
                     </div>
@@ -1138,6 +1132,49 @@ catch(e){}
                         </div>
                         <!-- 成交记录内容部分 -->
                         <div id="salelog_demo" class="yks-loading"></div>
+                    </div>
+                </div>--%>
+                <div class="yks-salelog">
+                    <div class="yks-goods-title-bar hd">
+                        <h4><a href="javascript:void(0);">销售记录</a></h4>
+                    </div>
+                    <div class="yks-goods-info-content bd" id="yksGoodsTraded">
+                        <div class="top">
+                            <div class="price">商&nbsp;城&nbsp;价 <strong>${med.itemMembership}</strong> 元 <span>购买的价格不同可能是由于店铺往期促销活动引起的，详情可以咨询卖家</span>
+                            </div>
+                        </div>
+                        <!-- 成交记录内容部分 -->
+                        <div id="salelog_demo" class="yks-loading">
+
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="mt10">
+                                <thead>
+                                <tr>
+                                    <th class="w200">买家</th>
+                                    <th class="w200">购买价</th>
+                                    <th class="w200">优惠活动</th>
+                                    <th class="w300">购买数量</th>
+                                    <!--      <th class="w200">--><!--</th>-->
+                                </tr>
+                                </thead>
+                                <tbody id="salesadd">
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="10" class="tr">
+                                        <div class="pagination">
+                                            <ul>
+                                                <li><span>首页</span></li>
+                                                <li><span>上一页</span></li>
+                                                <li><span class="currentpage">1</span></li>
+                                                <li><span>下一页</span></li>
+                                                <li><span>末页</span></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1463,16 +1500,22 @@ catch(e){}
       type="text/css"
       id="cssfile2"/>
 <script type="text/javascript">
+
+    //取商品id
+    var itemId = "${med.id}";
+
     var total = null;
 
     var good = true;
     var centre = true;
     var bad = true;
+    var sale = true;
 
     var apprText = true;
     var goodText = true;
     var centreText = true;
     var badText = true;
+    var saleText = true;
 
     var itemControl = {
         param: {
@@ -1481,6 +1524,8 @@ catch(e){}
             appraiseUrl: "/item/appraise/",
             appraiseCountUrl: "/item/appraise/count",
             appraiseNumUrl: "/item/appraise/num/",
+            saleUrl: "/item/sales/",
+            saleCountUrl: "/item/sales/count"
         },
         //请求商品描述
         getItemDesc: function (itemId) {
@@ -1625,11 +1670,38 @@ catch(e){}
                 });
                 bad = false;
             }
+        },
+        //销售记录
+        getItemSale: function () {
+            if (saleText) {
+                $.get(itemControl.param.saleUrl + itemId, function (data) {
+                    var data2 = eval('(' + data.data + ')');
+                    data2.forEach(function (e) {
+                        $("#salesadd").append("<tr>\n" +
+                            "                                    <td><a href=\"#\" target=\"_blank\">" + e.itemMj + "</a></td>\n" +
+                            "                                    <td><em class=\"price\"><i style=\"color:red;\">" + e.itemJg + "</i></em></td>\n" +
+                            "                                    <td>" + e.itemHd + "</td>\n" +
+                            "                                    <td>" + e.itemSl + "</td>\n" +
+                            "                                </tr>");
+                    });
+                });
+                saleText = false;
+            }
+        },
+        //销售记录总数
+        getItemSaleCount: function () {
+            if (sale) {
+                $.get(itemControl.param.saleCountUrl, function (data) {
+                   $("#salesCount").append(data.data)
+                });
+                sale = false;
+            }
         }
     };
     $(function () {
-        //取商品id
-        var itemId = "${med.id}";
+
+        itemControl.getItemAppraiseCount();
+
         $("#goodseval2").css("display", "none");//隐藏
         $("#goodseval3").css("display", "none");//隐藏
         $("#goodseval4").css("display", "none");//隐藏
@@ -1666,19 +1738,25 @@ catch(e){}
             itemControl.getAppraiseBad(itemId);
         });
 
+        //销售记录绑定事件
+        $("#tabGoodsTraded").bind("click", function () {
+            itemControl.getItemSale(itemId);
+        });
+
         //延迟一秒加载商品描述信息
         setTimeout(function () {
             itemControl.getItemDesc(itemId);
-        }, 1000);
+        }, 100);
 
         setTimeout(function () {
+            itemControl.getItemSaleCount();
             itemControl.getItemParam(itemId);
             itemControl.getItemAppraise(itemId);
-            itemControl.getItemAppraiseCount();
+
             itemControl.getItemAppraiseGood();
             itemControl.getItemAppraiseCentre();
             itemControl.getItemAppraiseBad();
-        }, 1500);
+        }, 500);
     });
 
 </script>
