@@ -55,12 +55,12 @@ public class MedinceServiceImpl implements MedinceService{
     }
 
     @Override
-    public ItemExplain queryExplain(String itemId) {
+    public ItemExplain queryExplain(Integer itemId) {
         // TODO Auto-generated method stub
 
         ItemExplainExample example = new ItemExplainExample();
-
         ItemExplainExample.Criteria cri = example.createCriteria();
+        cri.andItemIdEqualTo(itemId);
 
         List<ItemExplain> list = explinMapper.selectByExample(example);
 
@@ -71,7 +71,7 @@ public class MedinceServiceImpl implements MedinceService{
     }
 
     @Override
-    public Sales querySales(String itemId) {
+    public List<Sales> querySales(String itemId) {
         // TODO Auto-generated method stub
 
         SalesExample example = new SalesExample();
@@ -81,7 +81,7 @@ public class MedinceServiceImpl implements MedinceService{
         List<Sales> list = saleMapper.selectByExample(example);
 
         if(list != null && list.size()>0) {
-            return list.get(0);
+            return list;
         }
         return null;
     }
@@ -115,6 +115,12 @@ public class MedinceServiceImpl implements MedinceService{
     public Integer queryAppraiseNum(Integer id) {
         int num = appMapper.num(id);
         return num;
+    }
+
+    @Override
+    public Integer salesCount() {
+        int count = saleMapper.count();
+        return count;
     }
 
 

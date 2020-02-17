@@ -12,10 +12,10 @@ public interface MedinceService {
     public ItemDesc queryDesc(String itemId);
 
     //查询药品的说明书
-    public ItemExplain queryExplain(String itemId);
+    public ItemExplain queryExplain(Integer itemId);
 
     //查询药品的销售记录
-    public Sales querySales(String itemId);
+    public List<Sales> querySales(String itemId);
 
     //查询药品的评价
     public List<Appraise> queryAppraise(String drugId, Integer rank);
@@ -25,4 +25,7 @@ public interface MedinceService {
 
     //查询各个评价的个数
     public Integer queryAppraiseNum(Integer id);
+
+    //查询销售记录的总数
+    Integer salesCount();
 }

@@ -31,13 +31,13 @@ public class MedinceController {
 
     //查询药品的说明书
     @RequestMapping("/queryExplain/{itemId}")
-    public ItemExplain queryExplain(@PathVariable String itemId) {
+    public ItemExplain queryExplain(@PathVariable Integer itemId) {
         return meService.queryExplain(itemId);
     }
 
     //查询药品的销售记录
     @RequestMapping("/querySales/{itemId}")
-    public Sales querySales(@PathVariable String itemId) {
+    public List<Sales> querySales(@PathVariable String itemId) {
         return meService.querySales(itemId);
     }
 
@@ -57,5 +57,10 @@ public class MedinceController {
     @RequestMapping("/queryAppraise/num/{id}")
     public Integer queryAppraiseNum(@PathVariable("id")Integer id){
         return meService.queryAppraiseNum(id);
+    }
+
+    @RequestMapping("/sales/count")
+    public Integer salesCount(){
+        return meService.salesCount();
     }
 }
