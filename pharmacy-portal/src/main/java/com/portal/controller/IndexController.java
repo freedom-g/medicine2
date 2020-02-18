@@ -11,4 +11,9 @@ public class IndexController {
 
         return "index";
     }
+
+    @RequestMapping("/cart")
+    public String cart(){
+        return "cart";
+    }
 }

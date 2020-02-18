@@ -466,28 +466,35 @@ catch(e){}
                 <ul class="menu">
                     <c:forEach items="${data}" var="data1">
                         <li>
+
                             <div class="class sprite01">
                                 <span class="am-goods-ionic"><img
-                                        src="../../data/upload/shop/common/category-pic-5483.jpg"></span>
-                                <h4>${data1.name}</h4>
+                                        src="data/upload/shop/common/category-pic-5483.jpg"></span>
+                                <h4>
+                                    <a href="https://www.yuekangsong.com/cate-5483-0-0-0-0-0-0-0-0.html">${data1.name}</a>
+                                </h4>
                             </div>
+                                <%--第二层和第三层的大div--%>
                             <div class="sub-class">
                                 <c:forEach items="${data1.item}" var="data2">
                                     <div class="am-sublist">
-
                                         <div class="am-hot-word-line">
-                                            <div class="am-sub-left"><span class="arrow"></span>
+                                                <%--第二层--%>
+                                            <div class="am-sub-left">
+                                                <span class="arrow"></span>
                                                     ${data2.name}
                                             </div>
-                                            <c:forEach items="${data2.item}" var="data3">
-                                                <div class="am-sub-right">
-                                                        ${data3.name}
-                                                </div>
-                                                <div class="clear"></div>
-                                            </c:forEach>
+                                                <%--第三层--%>
+                                            <div class="am-sub-right">
+                                                <c:forEach items="${data2.item}" var="data3">
+                                                    <a href="/cat/searchs/${data3.url}">${data3.name}</a>
+                                                </c:forEach>
+                                            </div>
+                                            <div class="clear"></div>
                                         </div>
                                     </div>
                                 </c:forEach>
+
                             </div>
                         </li>
                     </c:forEach>
