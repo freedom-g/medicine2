@@ -3,14 +3,11 @@ package com.medince.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.medince.mapper.*;
-import com.medince.pojo.ItemCat;
-import com.medince.pojo.ItemCatExample;
-import com.medince.pojo.MedicineMessage;
-import com.medince.pojo.MedicineMessageExample;
+import com.medince.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.medince.mapper.ItemCatMapper;
 import com.medince.service.inteface.ItemCatService;
 import tree.CatDate;
 import com.medince.utils.ResultDate;
@@ -21,9 +18,13 @@ public class ItemCatServiceimpl implements ItemCatService{
 	@Autowired
 	private ItemCatMapper catMapper;
 
-	@Autowired
-    private MedicineMessageMapper messageMapper;
-	
+	//根据分类id查找商品
+	@Override
+	public List<MedicineMessage> getCid(Integer cid) {
+		return null;
+	}
+
+	//分类
 	@Override
 	public ResultDate getItemCatLis() {
 		// TODO Auto-generated method stub
@@ -32,47 +33,41 @@ public class ItemCatServiceimpl implements ItemCatService{
 		return result;
 	}
 
-	//根据分类id查询商品
-    @Override
-    public List<MedicineMessage> getCid(Long cid) {
 
-        MedicineMessageExample example = new MedicineMessageExample();
-        MedicineMessageExample.Criteria criteria = example.createCriteria();
-        criteria.andCidEqualTo(cid);
 
-        List<MedicineMessage> medicineMessages = messageMapper.selectByExample(example);
+	private List<CatDate> getCatList(Integer parentId) {
 
-        return medicineMessages;
-    }
-
-    private List<Object> getCatList(Integer parentId) {
-		
 		ItemCatExample item = new ItemCatExample();
-		
+
 		ItemCatExample.Criteria cr = item.createCriteria();
-		
+
 		cr.andParentIdEqualTo(parentId);
-		
+
 		List<ItemCat> list = catMapper.selectByExample(item);
-		
-		List<Object> resulList = new ArrayList();
-		
+
+		List<CatDate> resulList = new ArrayList();
+
 		for(ItemCat ItemCat : list) {
-			
+
 			if(ItemCat.getIsParent()==1) {
 				CatDate cat = new CatDate();
 				if(parentId == 0) {
-				cat.setName("<a href='/products/" + ItemCat.getId() + ".html'>" + ItemCat.getName() + "</a>");
-			} else {
-				cat.setName(ItemCat.getName());
-			}
-				cat.setUrl("/products/" + ItemCat.getId() + ".html");
+					cat.setName("<a href='/products/" + ItemCat.getId() + ".html'>" + ItemCat.getName() + "</a>");
+				} else {
+					cat.setName(ItemCat.getName());
+				}
+				//"/products/" + ItemCat.getId() + ".html"
+				cat.setUrl(String.valueOf(ItemCat.getId()));
 				cat.setItem(getCatList(ItemCat.getId()));
 				resulList.add(cat);
 			} else {
-				resulList.add("/products/" + ItemCat.getId() + ".html|" + ItemCat.getName() + "");
+				CatDate cat2 = new CatDate();
+				cat2.setName(ItemCat.getName());
+				cat2.setUrl(String.valueOf(ItemCat.getId()));
+				//"/products/" + ItemCat.getId() + ".html|" + ItemCat.getName() + ""
+				resulList.add(cat2);
 			}
-			
+
 		}
 		return resulList;
 	}

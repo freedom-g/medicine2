@@ -15,7 +15,7 @@ import java.util.List;
 public class ItemContorn {
 
 	@Autowired
-    ItemCatService sercice;
+	ItemCatService sercice;
 	
 	@RequestMapping("/cat/get")
 	public ResultDate getCat() {
@@ -24,7 +24,7 @@ public class ItemContorn {
 	}
 
 	@RequestMapping("/cat/cid/{cid}")
-    public List<MedicineMessage> getCid(@PathVariable("cid")Long cid){
+    public List<MedicineMessage> getCid(@PathVariable("cid")Integer cid){
 	    return sercice.getCid(cid);
     }
 }

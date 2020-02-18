@@ -9,6 +9,7 @@ public interface ItemCatService {
 
 	public ResultDate getItemCatLis();
 
-	public List<MedicineMessage> getCid(Long cid);
+	public List<MedicineMessage> getCid(Integer cid);
+	
 	
 }
