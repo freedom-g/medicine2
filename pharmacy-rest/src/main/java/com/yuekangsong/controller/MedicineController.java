@@ -37,22 +37,14 @@ public class MedicineController {
         return data;
     }
 
-    /**
-     * 查询药品的销售记录
-     * @param itemId
-     * @return
-     */
+    //查询药品的销售记录
     @RequestMapping(value = "/sales/{itemId}",produces = "application/json; charset=utf-8")
     public String querySales(@PathVariable String itemId){
         String data = medicineService.querySales(itemId);
         return data;
     }
 
-    /**
-     * 查询药品的评价
-     * @param drugId
-     * @return
-     */
+    //查询药品的评价
     @RequestMapping(value = "/appraise/{drugId}/{rank}",produces = "application/json; charset=utf-8")
     public String queryAppraise(@PathVariable String drugId,@PathVariable Integer rank){
         String data = medicineService.queryAppraise(drugId,rank);
