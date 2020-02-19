@@ -2,6 +2,7 @@ package com.advertis.service.impl;
 
 import com.advertis.service.ContentService;
 import com.medince.mapper.ContentMapper;
+import com.medince.mapper.MedicineMessageMapper;
 import com.medince.pojo.Content;
 import com.medince.pojo.MedicineMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,8 @@ public class ContentServiceImpl implements ContentService {
 
     @Autowired
     private ContentMapper contentMapper;
-
+    @Autowired
+    private MedicineMessageMapper messageMapper;
     @Override
     public List<Content> getContentList() {
 
@@ -30,7 +32,9 @@ public class ContentServiceImpl implements ContentService {
 
     @Override
     public List<MedicineMessage> getMedicineStatus() {
-        return null;
+        List<MedicineMessage> medicineMessages = messageMapper.selectStatus();
+        System.out.println(medicineMessages);
+        return medicineMessages;
     }
 
 }

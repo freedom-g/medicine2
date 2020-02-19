@@ -573,11 +573,10 @@ catch(e){}
     $.ajax({
         type: "GET",//请求方式为get或者post
         url: "/imgContent",//请求的url(一般为后台接口)
-//        data:{user:"xiao"},//发送到服务器的参数
         dataType: "json",//服务器响应的数据类型
-        success: function (data) { //请求成功后返回的数据，赋值给变量'data'
+        contentType: 'application/json;charset=UTF-8',
+        success: function () { //请求成功后返回的数据，赋值给变量'data'
             //对data进行操作
-            alert("111" + data);
         }
 
     });
@@ -594,7 +593,13 @@ catch(e){}
 
     <ul id="fullScreenSlides" class="full-screen-slides">
         <li style="background:  url('https://www.yuekangsong.com/data/upload/shop/editor/web-101-101-1.jpg?425') no-repeat center top">
-            <a href="www_yuekangsong_default.html" target="_blank" title="">&nbsp;</a></li>
+            <a href="www_yuekangsong_default.html" target="_blank" title="">&nbsp;</a>
+        </li>
+        <c:forEach items="${content}" var="con">
+            <li style="background:  url('https://www.yuekangsong.com/data/upload/shop/editor/web-101-101-1.jpg?425') no-repeat center top">
+                <a href="https://${con.url}">${con.pic}</a>
+            </li>
+        </c:forEach>
 
     </ul>
     <div class="jfocus-trigeminy">

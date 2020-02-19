@@ -2,6 +2,7 @@ package com.advertis.conterller;
 
 import com.advertis.service.ContentService;
 import com.medince.pojo.Content;
+import com.medince.pojo.MedicineMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,5 +32,17 @@ public class ContentConterller {
             return MedinceResult.build(500, e.getMessage());
         }
 
+    }
+
+    @RequestMapping("/status")
+    @ResponseBody
+    public MedinceResult getMessagesStatus(){
+        try {
+            List<MedicineMessage> medicineStatus = contentService.getMedicineStatus();
+            return MedinceResult.ok(medicineStatus);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return MedinceResult.build(500, e.getMessage());
+        }
     }
 }

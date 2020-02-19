@@ -33,4 +33,8 @@ public interface MedicineMessageMapper {
 
     @Select("select * from medicine_message")
     List<Map<String,Object>> importAllItems();
+
+    //新增查询商品状态方法
+    @Select("select * from medicine_message where status=1 limit 0,2")
+    List<MedicineMessage> selectStatus();
 }
