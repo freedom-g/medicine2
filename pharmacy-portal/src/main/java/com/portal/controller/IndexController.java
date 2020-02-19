@@ -16,4 +16,9 @@ public class IndexController {
     public String cart(){
         return "cart";
     }
+
+    @RequestMapping("/search")
+    public String search(){
+        return "search";
+    }
 }

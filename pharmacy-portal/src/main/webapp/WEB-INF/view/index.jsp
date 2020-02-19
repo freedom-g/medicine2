@@ -1,4 +1,3 @@
-<!doctype html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="zh">
@@ -460,18 +459,19 @@ catch(e){}
     <div class="wrapper">
         <div class="all-category">
             <div class="title"><i></i>
-                <h3><a href="https://www.yuekangsong.com/category.html">全部分类</a></h3>
+                <h3><a href="javascript:void(0);">全部分类</a></h3>
             </div>
             <div class="category new_category">
                 <ul class="menu">
-                    <c:forEach items="${data}" var="data1">
-                        <li>
 
+                    <c:forEach items="${data}" var="data1">
+
+                        <li>
                             <div class="class sprite01">
                                 <span class="am-goods-ionic"><img
                                         src="data/upload/shop/common/category-pic-5483.jpg"></span>
                                 <h4>
-                                    <a href="https://www.yuekangsong.com/cate-5483-0-0-0-0-0-0-0-0.html">${data1.name}</a>
+                                    ${data1.name}
                                 </h4>
                             </div>
                                 <%--第二层和第三层的大div--%>

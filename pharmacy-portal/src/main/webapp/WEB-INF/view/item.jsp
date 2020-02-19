@@ -979,7 +979,9 @@ catch(e){}
                                                    href="javascript:void(0);">商品详情</a></li>
                             <li><a id="tabGoodsInstructions" href="javascript:void(0);">说明书</a></li>
                             <li><a id="tabGoodsTraded" href="javascript:void(0);">销售记录
-                                <em>(<nobr id="salesCount"></nobr>)</em></a></li>
+                                <em>(
+                                    <nobr id="salesCount"></nobr>
+                                    )</em></a></li>
                             <li><a id="tabGoodsRate"
                                    href="javascript:void(0);">累计评价<em>(<span id="appraise1"></span>)</em></a>
                             </li>
@@ -1070,20 +1072,26 @@ catch(e){}
                                 <span>共有<nobr id="appraise3"></nobr>人参与评分</span></div>
                             <div class="percent">
                                 <dl>
-                                    <dt>好评<em>(<nobr style="white-space: nowrap;" id="appraiseGoodNum2"></nobr>%)</em></dt>
+                                    <dt>好评<em>(
+                                        <nobr style="white-space: nowrap;" id="appraiseGoodNum2"></nobr>
+                                        %)</em></dt>
                                     <dd>
                                         <i id="goodLength"></i>
                                     </dd>
                                 </dl>
                                 <dl>
-                                    <dt>中评<em>(<nobr id="appraiseCentreNum"></nobr>%)</em>
+                                    <dt>中评<em>(
+                                        <nobr id="appraiseCentreNum"></nobr>
+                                        %)</em>
                                     </dt>
                                     <dd>
                                         <i id="centreLength"></i>
                                     </dd>
                                 </dl>
                                 <dl>
-                                    <dt>差评<em>(<nobr id="appraiseBadNum"></nobr>%)</em></dt>
+                                    <dt>差评<em>(
+                                        <nobr id="appraiseBadNum"></nobr>
+                                        %)</em></dt>
                                     <dd>
                                         <i id="badLength"></i>
                                     </dd>
@@ -1522,10 +1530,10 @@ catch(e){}
             descUrl: "/item/desc/",
             paramUrl: "/item/explain/",
             appraiseUrl: "/item/appraise/",
-            appraiseCountUrl: "/item/appraise/count",
+            appraiseCountUrl: "/item/appraise/count/",
             appraiseNumUrl: "/item/appraise/num/",
             saleUrl: "/item/sales/",
-            saleCountUrl: "/item/sales/count"
+            saleCountUrl: "/item/sales/count/"
         },
         //请求商品描述
         getItemDesc: function (itemId) {
@@ -1618,7 +1626,7 @@ catch(e){}
         },
         //请求评价的总数
         getItemAppraiseCount: function () {
-            $.get(itemControl.param.appraiseCountUrl, function (data) {
+            $.get(itemControl.param.appraiseCountUrl + itemId, function (data) {
                 total = data.data;
                 $("#appraise1").append(data.data);
                 $("#appraise2").append(data.data);
@@ -1628,7 +1636,7 @@ catch(e){}
         //请求评价的好评数
         getItemAppraiseGood: function () {
             if (good) {
-                $.get(itemControl.param.appraiseNumUrl + 1, function (data) {
+                $.get(itemControl.param.appraiseNumUrl + itemId + "/" + 1, function (data) {
                     $("#appraiseGood").append(data.data);
                     var goodNum = data.data / total * 100;
                     goodNum = goodNum.toFixed(2);
@@ -1644,7 +1652,7 @@ catch(e){}
         //请求评价的中评数
         getItemAppraiseCentre: function () {
             if (centre) {
-                $.get(itemControl.param.appraiseNumUrl + 2, function (data) {
+                $.get(itemControl.param.appraiseNumUrl + itemId + "/" + 2, function (data) {
                     $("#appraiseCentre").append(data.data);
                     var centreNum = data.data / total * 100;
                     centreNum = centreNum.toFixed(2);
@@ -1659,7 +1667,7 @@ catch(e){}
         //请求评价的差评数
         getItemAppraiseBad: function () {
             if (bad) {
-                $.get(itemControl.param.appraiseNumUrl + 3, function (data) {
+                $.get(itemControl.param.appraiseNumUrl + itemId + "/" + 3, function (data) {
                     $("#appraiseBad").append(data.data);
                     var badNum = data.data / total * 100;
                     badNum = badNum.toFixed(2);
@@ -1691,8 +1699,8 @@ catch(e){}
         //销售记录总数
         getItemSaleCount: function () {
             if (sale) {
-                $.get(itemControl.param.saleCountUrl, function (data) {
-                   $("#salesCount").append(data.data)
+                $.get(itemControl.param.saleCountUrl + itemId, function (data) {
+                    $("#salesCount").append(data.data)
                 });
                 sale = false;
             }
