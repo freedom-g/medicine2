@@ -19,7 +19,7 @@ public class CatDate {
 
     private String name;
 
-    private List<Object> item;
+    private List<CatDate> item;
 
 	public String getUrl() {
 		return url;
@@ -37,20 +37,20 @@ public class CatDate {
 		this.name = name;
 	}
 
-	public List<Object> getItem() {
+	public List<CatDate> getItem() {
 		return item;
 	}
 
-	public void setItem(List<Object> item) {
+	public void setItem(List<CatDate> item) {
 		this.item = item;
 	}
 
-    @Override
-    public String toString() {
-        return "{" +
-                "url='" + url + '\'' +
-                ", name='" + name + '\'' +
-                ", item=" + item +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "CatDate{" +
+				"url='" + url + '\'' +
+				", name='" + name + '\'' +
+				", item=" + item +
+				'}';
+	}
 }
