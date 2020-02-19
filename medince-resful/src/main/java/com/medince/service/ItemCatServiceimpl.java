@@ -3,6 +3,7 @@ package com.medince.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.medince.mapper.MedicineMessageMapper;
 import com.medince.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,13 +19,30 @@ public class ItemCatServiceimpl implements ItemCatService{
 	@Autowired
 	private ItemCatMapper catMapper;
 
+	@Autowired
+    private MedicineMessageMapper messageMapper;
+
 	//根据分类id查找商品
 	@Override
 	public List<MedicineMessage> getCid(Integer cid) {
 		return null;
 	}
 
-	//分类
+	//查找所有商品
+    @Override
+    public List<MedicineMessage> getItemList(Long id) {
+
+        MedicineMessageExample example = new MedicineMessageExample();
+        MedicineMessageExample.Criteria criteria = example.createCriteria();
+        criteria.andCidEqualTo(id);
+
+        List<MedicineMessage> medicineMessages = messageMapper.selectByExample(example);
+
+        return medicineMessages;
+
+    }
+
+    //分类
 	@Override
 	public ResultDate getItemCatLis() {
 		// TODO Auto-generated method stub
@@ -53,6 +71,7 @@ public class ItemCatServiceimpl implements ItemCatService{
 				CatDate cat = new CatDate();
 				if(parentId == 0) {
 					cat.setName("<a href='/products/" + ItemCat.getId() + ".html'>" + ItemCat.getName() + "</a>");
+                    //cat.setName(ItemCat.getName());
 				} else {
 					cat.setName(ItemCat.getName());
 				}

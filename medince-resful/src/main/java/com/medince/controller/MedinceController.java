@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.medince.service.inteface.MedinceService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -17,9 +18,9 @@ public class MedinceController {
     @Autowired
     MedinceService meService;
 
-    @RequestMapping("/query/{itemId}")
-    public MedicineMessage query(@PathVariable String itemId) {
-        return meService.query(itemId);
+    @RequestMapping("/query/{itemId}/{username}")
+    public MedicineMessage query(@PathVariable String itemId,@PathVariable String username) {
+        return meService.query(itemId,username);
 
     };
 
@@ -48,19 +49,19 @@ public class MedinceController {
     }
 
     //查询评价总数
-    @RequestMapping("/queryAppraise/count")
-    public Integer queryAppraise() {
-        return meService.queryAppraiseCount();
+    @RequestMapping("/queryAppraise/count/{id}")
+    public Integer queryAppraise(@PathVariable Integer id) {
+        return meService.queryAppraiseCount(id);
     }
 
     //查询好中差评的个数
-    @RequestMapping("/queryAppraise/num/{id}")
-    public Integer queryAppraiseNum(@PathVariable("id")Integer id){
-        return meService.queryAppraiseNum(id);
+    @RequestMapping("/queryAppraise/num/{itemId}/{id}")
+    public Integer queryAppraiseNum(@PathVariable Integer itemId,@PathVariable("id")Integer id){
+        return meService.queryAppraiseNum(itemId,id);
     }
 
-    @RequestMapping("/sales/count")
-    public Integer salesCount(){
-        return meService.salesCount();
+    @RequestMapping("/sales/count/{id}")
+    public Integer salesCount(@PathVariable Integer id){
+        return meService.salesCount(id);
     }
 }

@@ -27,4 +27,9 @@ public class ItemContorn {
     public List<MedicineMessage> getCid(@PathVariable("cid")Integer cid){
 	    return sercice.getCid(cid);
     }
+
+    @RequestMapping("/cat/list/item/{id}")
+    public List<MedicineMessage> getItem(@PathVariable Long id){
+        return sercice.getItemList(id);
+    }
 }
