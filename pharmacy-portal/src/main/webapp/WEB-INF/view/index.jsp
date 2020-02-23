@@ -1,3 +1,4 @@
+<!doctype html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="zh">
@@ -75,39 +76,39 @@ catch(e){}
         $(function () {
             //首页左侧分类菜单
             $(".category ul.menu").find("li").each(
-                function () {
-                    $(this).hover(
-                        function () {
-                            var cat_id = $(this).attr("cat_id");
-                            var menu = $(this).find("div[cat_menu_id='" + cat_id + "']");
-                            menu.show();
-                            $(this).addClass("hover");
-                            menu.masonry({itemSelector: 'dl'});
-                            var menu_height = menu.height();
-                            if (menu_height < 60) menu.height(80);
-                            menu_height = menu.height();
-                            var li_top = $(this).position().top;
-                            if ((li_top > 60) && (menu_height >= li_top)) $(menu).css("top", -li_top + 50);
-                            if ((li_top > 150) && (menu_height >= li_top)) $(menu).css("top", -li_top + 90);
-                            if ((li_top > 240) && (li_top > menu_height)) $(menu).css("top", menu_height - li_top + 90);
-                            if ((li_top > 240) && (li_top - menu_height) < 60) $(menu).css("top", -150);
-                            if (li_top > 300 && (li_top > menu_height)) $(menu).css("top", 60 - menu_height);
-                            if ((li_top > 40) && (menu_height <= 120)) $(menu).css("top", -5);
-                        },
-                        function () {
-                            $(this).removeClass("hover");
-                            var cat_id = $(this).attr("cat_id");
-                            $(this).find("div[cat_menu_id='" + cat_id + "']").hide();
-                        }
-                    );
-                }
+                    function () {
+                        $(this).hover(
+                                function () {
+                                    var cat_id = $(this).attr("cat_id");
+                                    var menu = $(this).find("div[cat_menu_id='" + cat_id + "']");
+                                    menu.show();
+                                    $(this).addClass("hover");
+                                    menu.masonry({itemSelector: 'dl'});
+                                    var menu_height = menu.height();
+                                    if (menu_height < 60) menu.height(80);
+                                    menu_height = menu.height();
+                                    var li_top = $(this).position().top;
+                                    if ((li_top > 60) && (menu_height >= li_top)) $(menu).css("top", -li_top + 50);
+                                    if ((li_top > 150) && (menu_height >= li_top)) $(menu).css("top", -li_top + 90);
+                                    if ((li_top > 240) && (li_top > menu_height)) $(menu).css("top", menu_height - li_top + 90);
+                                    if ((li_top > 240) && (li_top - menu_height) < 60) $(menu).css("top", -150);
+                                    if (li_top > 300 && (li_top > menu_height)) $(menu).css("top", 60 - menu_height);
+                                    if ((li_top > 40) && (menu_height <= 120)) $(menu).css("top", -5);
+                                },
+                                function () {
+                                    $(this).removeClass("hover");
+                                    var cat_id = $(this).attr("cat_id");
+                                    $(this).find("div[cat_menu_id='" + cat_id + "']").hide();
+                                }
+                        );
+                    }
             );
             $(".head-user-menu dl").hover(function () {
-                    $(this).addClass("hover");
-                },
-                function () {
-                    $(this).removeClass("hover");
-                });
+                        $(this).addClass("hover");
+                    },
+                    function () {
+                        $(this).removeClass("hover");
+                    });
             $('.head-user-menu .my-mall').mouseover(function () {// 最近浏览的商品
                 load_history_information();
                 $(this).unbind('mouseover');
@@ -146,7 +147,7 @@ catch(e){}
         border-radius: 8px;
     }
 </style>
-<!--  改版的右侧侧边栏开始-->
+<!-- 改版的右侧侧边栏开始-->
 <div id="ncToolbar" class="yks-appbar am-rightbar" style="display: block;">
     <div class="am-rightfixbar">
         <div class="pop-bg-m">
@@ -203,7 +204,7 @@ catch(e){}
     </div>
 </div>
 
-<!--  改版的右侧侧边栏结束-->
+<!-- 改版的右侧侧边栏结束-->
 
 <script type="text/javascript">
     //返回顶部
@@ -278,21 +279,21 @@ catch(e){}
                 $('#content-cart').animate({'right': '-250px'});
                 $('#content-compare').animate({'right': '-150px'});
                 $('#ncToolbar').animate({'right': '-60px'}, 300,
-                    function () {
-                        $('#ncHideBar').animate({'right': '59px'}, 300);
-                    });
+                        function () {
+                            $('#ncHideBar').animate({'right': '59px'}, 300);
+                        });
                 $('div[nctype^="bar"]').hide();
             });
             $('#ncHideBar').click(function () {
                 $('#ncHideBar').animate({
-                        'right': '-79px'
-                    },
-                    300,
-                    function () {
-                        $('#content-cart').animate({'right': '-250px'});
-                        $('#content-compare').animate({'right': '-250px'});
-                        $('#ncToolbar').animate({'right': '0'}, 300);
-                    });
+                            'right': '-79px'
+                        },
+                        300,
+                        function () {
+                            $('#content-cart').animate({'right': '-250px'});
+                            $('#content-compare').animate({'right': '-250px'});
+                            $('#ncToolbar').animate({'right': '0'}, 300);
+                        });
             });
         });
         $("#compare").click(function () {
@@ -322,11 +323,11 @@ catch(e){}
         });
 
         $(".quick-menu dl").hover(function () {
-                $(this).addClass("hover");
-            },
-            function () {
-                $(this).removeClass("hover");
-            });
+                    $(this).addClass("hover");
+                },
+                function () {
+                    $(this).removeClass("hover");
+                });
 
         // 右侧bar用户信息
         $('div[nctype="a-barUserInfo"]').click(function () {
@@ -459,19 +460,18 @@ catch(e){}
     <div class="wrapper">
         <div class="all-category">
             <div class="title"><i></i>
-                <h3><a href="javascript:void(0);">全部分类</a></h3>
+                <h3><a href="https://www.yuekangsong.com/category.html">全部分类</a></h3>
             </div>
             <div class="category new_category">
                 <ul class="menu">
-
                     <c:forEach items="${data}" var="data1">
-
                         <li>
+
                             <div class="class sprite01">
                                 <span class="am-goods-ionic"><img
                                         src="data/upload/shop/common/category-pic-5483.jpg"></span>
                                 <h4>
-                                    ${data1.name}
+                                    <a href="https://www.yuekangsong.com/cate-5483-0-0-0-0-0-0-0-0.html">${data1.name}</a>
                                 </h4>
                             </div>
                                 <%--第二层和第三层的大div--%>
@@ -575,8 +575,9 @@ catch(e){}
         url: "/imgContent",//请求的url(一般为后台接口)
         dataType: "json",//服务器响应的数据类型
         contentType: 'application/json;charset=UTF-8',
-        success: function () { //请求成功后返回的数据，赋值给变量'data'
+        success: function (data) { //请求成功后返回的数据，赋值给变量'data'
             //对data进行操作
+            alert("111" + data);
         }
 
     });
@@ -593,14 +594,13 @@ catch(e){}
 
     <ul id="fullScreenSlides" class="full-screen-slides">
         <li style="background:  url('https://www.yuekangsong.com/data/upload/shop/editor/web-101-101-1.jpg?425') no-repeat center top">
-            <a href="www_yuekangsong_default.html" target="_blank" title="">&nbsp;</a>
-        </li>
+            <a href="www_yuekangsong_default.html" target="_blank" title="">&nbsp;</a></li>
+
         <c:forEach items="${content}" var="con">
             <li style="background:  url('https://www.yuekangsong.com/data/upload/shop/editor/web-101-101-1.jpg?425') no-repeat center top">
                 <a href="https://${con.url}">${con.pic}</a>
             </li>
         </c:forEach>
-
     </ul>
     <div class="jfocus-trigeminy">
         <ul>
@@ -680,19 +680,32 @@ catch(e){}
     <!--  右侧登录结束-->
 </div>
 <!--HomeFocusLayout End-->
+<script type="text/javascript">
+    $.ajax({
+        type: "GET",//请求方式为get或者post
+        url: "/messagesStatus",//请求的url(一般为后台接口)
+        dataType: "json",//服务器响应的数据类型
+        contentType: 'application/json;charset=UTF-8',
+        success: function (data) { //请求成功后返回的数据，赋值给变量'data'
+            //对data进行操作
+        }
 
+    });
+</script>
 <div class="home-sale-layout wrapper">
     <div class="left-layout">
 
         <ul class="tabs-nav">
             <li class="tabs-selected"><i class="arrow"></i>
-                <h3>猜您喜欢</h3></li>
+                <h3>促销商品</h3></li>
         </ul>
         <div class="tabs-panel sale-goods-list ">
+            <c:forEach items="${messageStatus}" var="status">
             <ol class="am-tabs-lists">
-                <li><a href="https://www.yuekangsong.com/item-100743.html"> <img
-                        src="../../data/upload/shop/store/goods/1/1_05148934448984365_240.jpg"></a></li>
+                <li><a href="http://localhost:8081/item/message/${status.id}"> <img
+                        src="${status.img}"></a></li>
             </ol>
+            </c:forEach>
         </div>
 
 
@@ -705,694 +718,101 @@ catch(e){}
 <div class="am-floor-area">
     <div class="am-floor-jtcb">
         <ul>
-            <li><img src="../../shop/templates/default/images/shop/jiatingcb.png"><em>家庭常备</em></li>
-            <li><img src="../../shop/templates/default/images/shop/sprites_gray02.png"><em>专科用药</em></li>
-            <li><img src="../../shop/templates/default/images/shop/sprites_gray04.png"><em>妇科用药</em></li>
-            <li><img src="../../shop/templates/default/images/shop/sprites_gray03.png"><em>男科用药</em></li>
-            <li><img src="../../shop/templates/default/images/shop/sprites_gray05.png"><em>滋补保健</em></li>
-            <li><img src="../../shop/templates/default/images/shop/sprites_gray06.png"><em>成人用品</em></li>
-            <li class="am-last-child"><img
-                    src="../../shop/templates/default/images/shop/sprites_gray06.png"><em>医疗器械</em></li>
+            <li><img src="../../shop/templates/default/images/shop/jiatingcb.png"><em>常备药</em></li>
+            <li><img src="../../shop/templates/default/images/shop/sprites_gray02.png"><em>老年用药</em></li>
+            <li><img src="../../shop/templates/default/images/shop/sprites_gray04.png"><em>外用药</em></li>
+
         </ul>
     </div>
+
     <!--StandardLayout Begin-->
+    <c:forEach items="${data}" var="fen">
 
 
-    <div class="am-floor am-pink"
-    ">
-    <div class="am-floor-left"><h1>1F 家庭常备</h1>
-        <ul>
-            <li><a href="https://www.yuekangsong.com/cate-5485-0-0-0-0-0-0-0-0.html" title="流行性感冒"
-                   target="_blank">流行性感冒</a></li>
-            <li><a href="https://www.yuekangsong.com/cate-5486-0-0-0-0-0-0-0-0.html" title="普通感冒"
-                   target="_blank">普通感冒</a></li>
-            <li><a href="https://www.yuekangsong.com/cate-5492-0-0-0-0-0-0-0-0.html" title="脚气/手足癣" target="_blank">脚气/手足癣</a>
-            </li>
-            <li><a href="https://www.yuekangsong.com/cate-5493-0-0-0-0-0-0-0-0.html" title="脱发" target="_blank">脱发</a>
-            </li>
-            <li><a href="https://www.yuekangsong.com/cate-5494-0-0-0-0-0-0-0-0.html" title="创可贴" target="_blank">创可贴</a>
-            </li>
-            <li><a href="https://www.yuekangsong.com/cate-5495-0-0-0-0-0-0-0-0.html" title="白发" target="_blank">白发</a>
-            </li>
-            <li><a href="https://www.yuekangsong.com/cate-5496-0-0-0-0-0-0-0-0.html" title="皮肤瘙痒"
-                   target="_blank">皮肤瘙痒</a></li>
-            <li><a href="https://www.yuekangsong.com/cate-5497-0-0-0-0-0-0-0-0.html" title="清热解毒"
-                   target="_blank">清热解毒</a></li>
-            <li><a href="https://www.yuekangsong.com/cate-5500-0-0-0-0-0-0-0-0.html" title="咳嗽" target="_blank">咳嗽</a>
-            </li>
-            <li><a href="https://www.yuekangsong.com/cate-5502-0-0-0-0-0-0-0-0.html" title="止咳化痰"
-                   target="_blank">止咳化痰</a></li>
-            <li><a href="https://www.yuekangsong.com/cate-5510-0-0-0-0-0-0-0-0.html" title="视疲劳" target="_blank">视疲劳</a>
-            </li>
-            <li><a href="https://www.yuekangsong.com/cate-5511-0-0-0-0-0-0-0-0.html" title="口腔溃疡"
-                   target="_blank">口腔溃疡</a></li>
-            <li><a href="https://www.yuekangsong.com/cate-5512-0-0-0-0-0-0-0-0.html" title="过敏性鼻炎"
-                   target="_blank">过敏性鼻炎</a></li>
-            <li><a href="https://www.yuekangsong.com/cate-5487-0-0-0-0-0-0-0-0.html" title="皮肤护理"
-                   target="_blank">皮肤护理</a></li>
+        <div class="am-floor am-pink">
 
-        </ul>
-    </div>
-    <div class="am-floor-right">
-        <div class="am-f-top">
-            <div class="am-slider">
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><a href="www_yuekangsong_default.html"
-                                                     title=""
-                                                     target="_blank">
-                            <img src="https://www.yuekangsong.com/data/upload/"
-                                 alt=""/></a></div>
-                    </div>
-                    <!-- 如果需要分页器 -->
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-            <div class="am-r-add">
+            <div class="am-floor-left"><h1>${fen.name}</h1>
                 <ul>
-                    <li><a href="https://www.yuekangsong.com/index.php?c=special&op=special_detail&special_id=32"><img
-                            src="../../data/upload/shop/editor/06269819598540970.jpg"></a></li>
-                    <li><a href="https://www.yuekangsong.com/index.php?c=special&op=special_detail&special_id=33"><img
-                            src="../../data/upload/shop/editor/06269819661072667.jpg"></a></li>
+                    <c:forEach items="${fen.item}" var="fen2">
+                        <c:forEach items="${fen2.item}" var="fen3">
+                            <li><a href="/cat/searchs/${fen3.url}" title="${fen3.name}"
+                                   target="_blank">${fen3.name}</a></li>
+                        </c:forEach>
+                    </c:forEach>
                 </ul>
             </div>
-        </div>
-        <div style="clear: both;"></div>
-        <div class="am-bottom">
-            <ul>
-                <li><a target="_blank"
-                       href="https://www.yuekangsong.com/item-100718.html">
-                    <img
-                            src="../../data/upload/shop/store/goods/1/1_05148259112194589_240.jpg"
-                            alt="小儿感冒颗粒"/>
-                </a>
-
-                    <p><a target="_blank"
-                          href="https://www.yuekangsong.com/item-100718.html"
-                          title="小儿感冒颗粒">
-                        小儿感冒颗粒</a></p>
-
-                    <h2>&yen;12.00<span><del>
-                                                &yen;15.80</del></span>
-                    </h2>
-                </li>
-                <li><a target="_blank"
-                       href="https://www.yuekangsong.com/item-100684.html">
-                    <img
-                            src="../../data/upload/shop/store/goods/1/1_05148018816820416_240.jpg"
-                            alt="桑菊感冒片"/>
-                </a>
-
-                    <p><a target="_blank"
-                          href="https://www.yuekangsong.com/item-100684.html"
-                          title="桑菊感冒片">
-                        桑菊感冒片</a></p>
-
-                    <h2>&yen;10.50<span><del>
-                                                &yen;24.60</del></span>
-                    </h2>
-                </li>
-                <li><a target="_blank"
-                       href="https://www.yuekangsong.com/item-100795.html">
-                    <img
-                            src="../../data/upload/shop/store/goods/1/1_05149195900720616_240.jpg"
-                            alt="京制牛黄解毒片"/>
-                </a>
-
-                    <p><a target="_blank"
-                          href="https://www.yuekangsong.com/item-100795.html"
-                          title="京制牛黄解毒片">
-                        京制牛黄解毒片</a></p>
-
-                    <h2>&yen;23.80<span><del>
-                                                &yen;25.00</del></span>
-                    </h2>
-                </li>
-                <li><a target="_blank"
-                       href="https://www.yuekangsong.com/item-100831.html">
-                    <img
-                            src="../../data/upload/shop/store/goods/1/1_05149941317463962_240.png"
-                            alt="银翘解毒片"/>
-                </a>
-
-                    <p><a target="_blank"
-                          href="https://www.yuekangsong.com/item-100831.html"
-                          title="银翘解毒片">
-                        银翘解毒片</a></p>
-
-                    <h2>&yen;9.90<span><del>
-                                                &yen;10.70</del></span>
-                    </h2>
-                </li>
-                <li><a target="_blank"
-                       href="https://www.yuekangsong.com/item-100794.html">
-                    <img
-                            src="../../data/upload/shop/store/goods/1/1_05149191816067126_240.jpg"
-                            alt="感冒灵胶囊"/>
-                </a>
-
-                    <p><a target="_blank"
-                          href="https://www.yuekangsong.com/item-100794.html"
-                          title="感冒灵胶囊">
-                        感冒灵胶囊</a></p>
-
-                    <h2>&yen;10.90<span><del>
-                                                &yen;12.20</del></span>
-                    </h2>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div style="clear: both;"></div>
-</div>
-
-
-<div class="am-floor am-blue"
-">
-<div class="am-floor-left"><h1>2F 专科用药</h1>
-    <ul>
-        <li><a href="https://www.yuekangsong.com/cate-5577-0-0-0-0-0-0-0-0.html" title="风湿骨科" target="_blank">风湿骨科</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5583-0-0-0-0-0-0-0-0.html" title="肝胆胃肠" target="_blank">肝胆胃肠</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5586-0-0-0-0-0-0-0-0.html" title="解热镇痛" target="_blank">解热镇痛</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5605-0-0-0-0-0-0-0-0.html" title="缺铁性贫血" target="_blank">缺铁性贫血</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5607-0-0-0-0-0-0-0-0.html" title="神经/精神科"
-               target="_blank">神经/精神科</a></li>
-        <li><a href="https://www.yuekangsong.com/cate-5610-0-0-0-0-0-0-0-0.html" title="心脑血管科" target="_blank">心脑血管科</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5612-0-0-0-0-0-0-0-0.html" title="眼耳口鼻" target="_blank">眼耳口鼻</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5616-0-0-0-0-0-0-0-0.html" title="止痛" target="_blank">止痛</a></li>
-        <li><a href="https://www.yuekangsong.com/cate-5589-0-0-0-0-0-0-0-0.html" title="痤疮" target="_blank">痤疮</a></li>
-        <li><a href="https://www.yuekangsong.com/cate-5596-0-0-0-0-0-0-0-0.html" title="皮肤癣症" target="_blank">皮肤癣症</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5598-0-0-0-0-0-0-0-0.html" title="皮肤炎症" target="_blank">皮肤炎症</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5601-0-0-0-0-0-0-0-0.html" title="烧烫创伤" target="_blank">烧烫创伤</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5580-0-0-0-0-0-0-0-0.html" title="活血化瘀" target="_blank">活血化瘀</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5581-0-0-0-0-0-0-0-0.html" title="颈椎病" target="_blank">颈椎病</a>
-        </li>
-
-    </ul>
-</div>
-<div class="am-floor-right">
-    <div class="am-f-top">
-        <div class="am-slider">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><a href="www_yuekangsong_default.html"
-                                                 title=""
-                                                 target="_blank">
-                        <img src="https://www.yuekangsong.com/data/upload/"
-                             alt=""/></a></div>
+            <div class="am-floor-right">
+                <div class="am-f-top">
+                    <div class="am-slider">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><a href="www_yuekangsong_default.html"
+                                                             title=""
+                                                             target="_blank">
+                                    <img src="https://www.yuekangsong.com/data/upload/"
+                                         alt=""/></a></div>
+                            </div>
+                            <!-- 如果需要分页器 -->
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                    <div class="am-r-add">
+                        <ul>
+                            <li>
+                                <a href="https://www.yuekangsong.com/index.php?c=special&op=special_detail&special_id=32"><img
+                                        src="../../data/upload/shop/editor/06269819598540970.jpg"></a></li>
+                            <li>
+                                <a href="https://www.yuekangsong.com/index.php?c=special&op=special_detail&special_id=33"><img
+                                        src="../../data/upload/shop/editor/06269819661072667.jpg"></a></li>
+                        </ul>
+                    </div>
                 </div>
-                <!-- 如果需要分页器 -->
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-        <div class="am-r-add">
-            <ul>
-                <li><a href="https://www.yuekangsong.com/index.php?c=special&op=special_detail&special_id=35"><img
-                        src="../../data/upload/shop/editor/06269820321380157.jpg"></a></li>
-                <li><a href="https://www.yuekangsong.com/index.php?c=special&op=special_detail&special_id=34"><img
-                        src="../../data/upload/shop/editor/05531068392724022.png"></a></li>
-            </ul>
-        </div>
-    </div>
-    <div style="clear: both;"></div>
-    <div class="am-bottom">
-        <ul>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-101144.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05204492033855726_240.jpg"
-                        alt="辣椒风湿膏"/>
-            </a>
+                <div style="clear: both;"></div>
+                <script type="text/javascript">
 
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-101144.html"
-                      title="辣椒风湿膏">
-                    辣椒风湿膏</a></p>
+                    $.ajax({
+                        type: "GET",
+                        url: "http://localhost:8081/cat/ping",
+                        success: function (data) {
+                        }
+                    });
 
-                <h2>&yen;35.00<span><del>
-                                                &yen;36.00</del></span>
-                </h2>
-            </li>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-101277.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05227754661692108_240.jpg"
-                        alt="吲哚美辛贴片"/>
-            </a>
+                </script>
+                <div class="am-bottom">
+                    <ul>
+                        <c:forEach items="${json5}" var="jso1">
+                            <c:if test="${jso1.id eq fen.url}">
+                                <c:forEach items="${jso1.list}" var="jso">
 
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-101277.html"
-                      title="吲哚美辛贴片">
-                    吲哚美辛贴片</a></p>
+                                    <li><a target="_blank"
+                                           href="http://localhost:8081/item/message/${jso.id}">
+                                        <img
+                                                src="${jso.img}"
+                                                alt="${jso.itemName}"/>
+                                    </a>
 
-                <h2>&yen;62.00<span><del>
-                                                &yen;68.00</del></span>
-                </h2>
-            </li>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-101262.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05224354674217669_240.jpg"
-                        alt="颈复康颗粒"/>
-            </a>
+                                        <p><a target="_blank"
+                                              href="http://localhost:8081/item/message/${jso.id}"
+                                              title="${jso.itemName}">
+                                                ${jso.itemName}</a></p>
 
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-101262.html"
-                      title="颈复康颗粒">
-                    颈复康颗粒</a></p>
+                                        <h2>&yen;${jso.itemBrand}<span><del>
+    &yen;15.80</del></span>
+                                        </h2>
+                                    </li>
 
-                <h2>&yen;25.00<span><del>
-                                                &yen;30.00</del></span>
-                </h2>
-            </li>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-100876.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05151518443262986_240.jpg"
-                        alt="复方南星止痛膏"/>
-            </a>
+                                </c:forEach>
+                            </c:if>
+                        </c:forEach>
 
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-100876.html"
-                      title="复方南星止痛膏">
-                    复方南星止痛膏</a></p>
-
-                <h2>&yen;24.30<span><del>
-                                                &yen;30.40</del></span>
-                </h2>
-            </li>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-101588.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05550027583466252_240.jpg"
-                        alt="康恩贝肠炎宁片"/>
-            </a>
-
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-101588.html"
-                      title="康恩贝肠炎宁片">
-                    康恩贝肠炎宁片</a></p>
-
-                <h2>&yen;14.90<span><del>
-                                                &yen;29.90</del></span>
-                </h2>
-            </li>
-        </ul>
-    </div>
-</div>
-<div style="clear: both;"></div>
-</div>
-
-
-<div class="am-floor am-purple"
-">
-<div class="am-floor-left"><h1>3F 妇科用药</h1>
-    <ul>
-        <li><a href="https://www.yuekangsong.com/cate-5700-0-0-0-0-0-0-0-0.html" title="阴道炎" target="_blank">阴道炎</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5693-0-0-0-0-0-0-0-0.html" title="滋阴降火" target="_blank">滋阴降火</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5476-0-0-0-0-0-0-0-0.html" title="避孕" target="_blank">避孕</a></li>
-        <li><a href="https://www.yuekangsong.com/cate-5477-0-0-0-0-0-0-0-0.html" title="痛经" target="_blank">痛经</a></li>
-        <li><a href="https://www.yuekangsong.com/cate-5478-0-0-0-0-0-0-0-0.html" title="月经不调" target="_blank">月经不调</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5479-0-0-0-0-0-0-0-0.html" title="白带异常" target="_blank">白带异常</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5480-0-0-0-0-0-0-0-0.html" title="更年期" target="_blank">更年期</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5481-0-0-0-0-0-0-0-0.html" title="盆腔炎" target="_blank">盆腔炎</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5689-0-0-0-0-0-0-0-0.html" title="过敏" target="_blank">过敏</a></li>
-        <li><a href="https://www.yuekangsong.com/cate-5690-0-0-0-0-0-0-0-0.html" title="宫颈炎" target="_blank">宫颈炎</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5475-0-0-0-0-0-0-0-0.html" title="阴道炎" target="_blank">阴道炎</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/brand-1211-0-0-0-0-0-0.html">康美</a></li>
-        <li><a href="https://www.yuekangsong.com/brand-1275-0-0-0-0-0-0.html">普济仁堂</a></li>
-        <li><a href="https://www.yuekangsong.com/brand-316-0-0-0-0-0-0.html">东信</a></li>
-
-    </ul>
-</div>
-<div class="am-floor-right">
-    <div class="am-f-top">
-        <div class="am-slider">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><a href="www_yuekangsong_default.html"
-                                                 title=""
-                                                 target="_blank">
-                        <img src="https://www.yuekangsong.com/data/upload/"
-                             alt=""/></a></div>
+                    </ul>
                 </div>
-                <!-- 如果需要分页器 -->
-                <div class="swiper-pagination"></div>
             </div>
+            <div style="clear: both;"></div>
         </div>
-        <div class="am-r-add">
-            <ul>
-                <li><a href="https://www.yuekangsong.com/index.php?c=special&op=special_detail&special_id=38"><img
-                        src="../../data/upload/shop/editor/06269820483096036.jpg"></a></li>
-                <li><a href="https://www.yuekangsong.com/index.php?c=special&op=special_detail&special_id=39"><img
-                        src="../../data/upload/shop/editor/06269820532940591.jpg"></a></li>
-            </ul>
-        </div>
-    </div>
+    </c:forEach>
     <div style="clear: both;"></div>
-    <div class="am-bottom">
-        <ul>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-100623.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05145615259111064_240.jpg"
-                        alt="左炔诺孕酮片（金毓婷）"/>
-            </a>
-
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-100623.html"
-                      title="左炔诺孕酮片（金毓婷）">
-                    左炔诺孕酮片（金毓婷）</a></p>
-
-                <h2>&yen;18.00<span><del>
-                                                &yen;40.00</del></span>
-                </h2>
-            </li>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-100814.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05149827611276279_240.jpg"
-                        alt="益母草颗粒"/>
-            </a>
-
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-100814.html"
-                      title="益母草颗粒">
-                    益母草颗粒</a></p>
-
-                <h2>&yen;15.00<span><del>
-                                                &yen;20.00</del></span>
-                </h2>
-            </li>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-100807.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05149784639259492_240.jpg"
-                        alt="气血和胶囊"/>
-            </a>
-
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-100807.html"
-                      title="气血和胶囊">
-                    气血和胶囊</a></p>
-
-                <h2>&yen;269.00<span><del>
-                                                &yen;288.00</del></span>
-                </h2>
-            </li>
-        </ul>
-    </div>
 </div>
-<div style="clear: both;"></div>
-</div>
-
-
-<div class="am-floor am-orange"
-">
-<div class="am-floor-left"><h1>4F 男科用药</h1>
-    <ul>
-        <li><a href="https://www.yuekangsong.com/cate-5518-0-0-0-0-0-0-0-0.html" title="滋补保健" target="_blank">滋补保健</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5519-0-0-0-0-0-0-0-0.html" title="温肾壮阳" target="_blank">温肾壮阳</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5520-0-0-0-0-0-0-0-0.html" title="滋肾养肺" target="_blank">滋肾养肺</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5521-0-0-0-0-0-0-0-0.html" title="阳痿早泄" target="_blank">阳痿早泄</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5522-0-0-0-0-0-0-0-0.html" title="补肾固齿" target="_blank">补肾固齿</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/brand-348-0-0-0-0-0-0.html">同仁堂</a></li>
-        <li><a href="https://www.yuekangsong.com/brand-1270-0-0-0-0-0-0.html">花城制药</a></li>
-        <li><a href="https://www.yuekangsong.com/brand-597-0-0-0-0-0-0.html">太极</a></li>
-        <li><a href="https://www.yuekangsong.com/brand-214-0-0-0-0-0-0.html">京果</a></li>
-        <li><a href="https://www.yuekangsong.com/brand-215-0-0-0-0-0-0.html">九芝堂</a></li>
-        <li><a href="https://www.yuekangsong.com/brand-1199-0-0-0-0-0-0.html">汇仁</a></li>
-        <li><a href="https://www.yuekangsong.com/brand-1146-0-0-0-0-0-0.html">汤臣倍健</a></li>
-        <li><a href="https://www.yuekangsong.com/brand-1211-0-0-0-0-0-0.html">康美</a></li>
-        <li><a href="https://www.yuekangsong.com/brand-840-0-0-0-0-0-0.html">养生堂</a></li>
-
-    </ul>
-</div>
-<div class="am-floor-right">
-    <div class="am-f-top">
-        <div class="am-slider">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><a href="www_yuekangsong_default.html"
-                                                 title=""
-                                                 target="_blank">
-                        <img src="https://www.yuekangsong.com/data/upload/"
-                             alt=""/></a></div>
-                </div>
-                <!-- 如果需要分页器 -->
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-        <div class="am-r-add">
-            <ul>
-                <li><a href="https://www.yuekangsong.com/index.php?c=special&op=special_detail&special_id=36"><img
-                        src="../../data/upload/shop/editor/06269820664444849.jpg"></a></li>
-                <li><a href="https://www.yuekangsong.com/index.php?c=special&op=special_detail&special_id=37"><img
-                        src="../../data/upload/shop/editor/06269820716749218.jpg"></a></li>
-            </ul>
-        </div>
-    </div>
-    <div style="clear: both;"></div>
-    <div class="am-bottom">
-        <ul>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-101343.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05239828729330160_240.jpg"
-                        alt="阳春口服液"/>
-            </a>
-
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-101343.html"
-                      title="阳春口服液">
-                    阳春口服液</a></p>
-
-                <h2>&yen;99.00<span><del>
-                                                &yen;136.00</del></span>
-                </h2>
-            </li>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-101118.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05204193846043903_240.jpg"
-                        alt="锁阳固精丸"/>
-            </a>
-
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-101118.html"
-                      title="锁阳固精丸">
-                    锁阳固精丸</a></p>
-
-                <h2>&yen;25.00<span><del>
-                                                &yen;28.00</del></span>
-                </h2>
-            </li>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-100847.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05150012485736802_240.jpg"
-                        alt="麦味地黄丸（大蜜丸）"/>
-            </a>
-
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-100847.html"
-                      title="麦味地黄丸（大蜜丸）">
-                    麦味地黄丸（大蜜丸）</a></p>
-
-                <h2>&yen;13.10<span><del>
-                                                &yen;14.50</del></span>
-                </h2>
-            </li>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-100706.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05148195749806013_240.jpg"
-                        alt="五子衍宗丸"/>
-            </a>
-
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-100706.html"
-                      title="五子衍宗丸">
-                    五子衍宗丸</a></p>
-
-                <h2>&yen;22.00<span><del>
-                                                &yen;22.00</del></span>
-                </h2>
-            </li>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-100817.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05149842916559633_240.jpg"
-                        alt="补肾固齿丸"/>
-            </a>
-
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-100817.html"
-                      title="补肾固齿丸">
-                    补肾固齿丸</a></p>
-
-                <h2>&yen;42.90<span><del>
-                                                &yen;50.40</del></span>
-                </h2>
-            </li>
-        </ul>
-    </div>
-</div>
-<div style="clear: both;"></div>
-</div>
-
-
-<div class="am-floor am-green"
-">
-<div class="am-floor-left"><h1>5F 滋补保健</h1>
-    <ul>
-        <li><a href="https://www.yuekangsong.com/cate-5621-0-0-0-0-0-0-0-0.html" title="改善机能" target="_blank">改善机能</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5641-0-0-0-0-0-0-0-0.html" title="贵细滋补品" target="_blank">贵细滋补品</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5661-0-0-0-0-0-0-0-0.html" title="休闲零食" target="_blank">休闲零食</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5670-0-0-0-0-0-0-0-0.html" title="养生茶饮" target="_blank">养生茶饮</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5673-0-0-0-0-0-0-0-0.html" title="叶酸" target="_blank">叶酸</a></li>
-        <li><a href="https://www.yuekangsong.com/cate-5675-0-0-0-0-0-0-0-0.html" title="营养调节" target="_blank">营养调节</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5683-0-0-0-0-0-0-0-0.html" title="中药饮片" target="_blank">中药饮片</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5676-0-0-0-0-0-0-0-0.html" title="胶原蛋白类" target="_blank">胶原蛋白类</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5677-0-0-0-0-0-0-0-0.html" title="褪黑素" target="_blank">褪黑素</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5678-0-0-0-0-0-0-0-0.html" title="氨基酸类" target="_blank">氨基酸类</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5684-0-0-0-0-0-0-0-0.html" title="传统汤料" target="_blank">传统汤料</a>
-        </li>
-        <li><a href="https://www.yuekangsong.com/cate-5686-0-0-0-0-0-0-0-0.html" title="珍珠" target="_blank">珍珠</a></li>
-        <li><a href="https://www.yuekangsong.com/cate-5687-0-0-0-0-0-0-0-0.html" title="洋参/花旗参"
-               target="_blank">洋参/花旗参</a></li>
-        <li><a href="https://www.yuekangsong.com/cate-5626-0-0-0-0-0-0-0-0.html" title="维生素C" target="_blank">维生素C</a>
-        </li>
-
-    </ul>
-</div>
-<div class="am-floor-right">
-    <div class="am-f-top">
-        <div class="am-slider">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><a href="www_yuekangsong_default.html"
-                                                 title=""
-                                                 target="_blank">
-                        <img src="https://www.yuekangsong.com/data/upload/"
-                             alt=""/></a></div>
-                </div>
-                <!-- 如果需要分页器 -->
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-        <div class="am-r-add">
-            <ul>
-                <li><a href="https://www.yuekangsong.com/index.php?c=special&op=special_detail&special_id=43"><img
-                        src="../../data/upload/shop/editor/06269820859542359.jpg"></a></li>
-            </ul>
-        </div>
-    </div>
-    <div style="clear: both;"></div>
-    <div class="am-bottom">
-        <ul>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-100894.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05151707101793487_240.jpg"
-                        alt="汤臣倍健维生素C片"/>
-            </a>
-
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-100894.html"
-                      title="汤臣倍健维生素C片">
-                    汤臣倍健维生素C片</a></p>
-
-                <h2>&yen;118.00<span><del>
-                                                &yen;128.00</del></span>
-                </h2>
-            </li>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-101074.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05198524319485032_240.jpg"
-                        alt="脑白金年轻态健康品"/>
-            </a>
-
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-101074.html"
-                      title="脑白金年轻态健康品">
-                    脑白金年轻态健康品</a></p>
-
-                <h2>&yen;258.00<span><del>
-                                                &yen;268.00</del></span>
-                </h2>
-            </li>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-101073.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05198521199063426_240.jpg"
-                        alt="太太静心助眠口服液"/>
-            </a>
-
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-101073.html"
-                      title="太太静心助眠口服液">
-                    太太静心助眠口服液</a></p>
-
-                <h2>&yen;298.00<span><del>
-                                                &yen;300.00</del></span>
-                </h2>
-            </li>
-            <li><a target="_blank"
-                   href="https://www.yuekangsong.com/item-101507.html">
-                <img
-                        src="../../data/upload/shop/store/goods/1/1_05496285661112291_240.jpg"
-                        alt="同仁堂红糖姜茶"/>
-            </a>
-
-                <p><a target="_blank"
-                      href="https://www.yuekangsong.com/item-101507.html"
-                      title="同仁堂红糖姜茶">
-                    同仁堂红糖姜茶</a></p>
-
-                <h2>&yen;33.00<span><del>
-                                                &yen;39.80</del></span>
-                </h2>
-            </li>
-        </ul>
-    </div>
-</div>
-<div style="clear: both;"></div>
-</div>
-
 </div>
 <!--StandardLayout End-->
 <div class="wrapper">
